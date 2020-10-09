@@ -10,11 +10,11 @@ import java.util.Scanner;
 public class Main {
 
     public static void main(String[] args) throws IOException  {
-        File washCardId = new File("/Users/AndreasGargulak/Documents/KEA/CarWash/validNumbers.txt");
+        File washCardId = new File("C:\\Users\\asger\\IdeaProjects\\CarWash-1\\validNumbers.txt");
         Scanner inputUser = new Scanner(System.in);
         Scanner inputWashCardId = new Scanner(washCardId);
         WashCard washCard = new WashCard();
-        FileWriter myWriter = new FileWriter("/Users/AndreasGargulak/Documents/KEA/CarWash/CarWashStatistic",true);
+        FileWriter myWriter = new FileWriter("C:\\Users\\asger\\IdeaProjects\\CarWash-1\\CarWashStatistic",true);
 
         ArrayList<Object> list = new ArrayList<>();
         while (inputWashCardId.hasNextLine()) {
@@ -56,7 +56,7 @@ public class Main {
                                 "be deducted from you card");
 
                         washCard.deductFromBalance(price);
-                        myWriter.write(price+"\n");
+                        myWriter.write("\n"+price);
                         myWriter.close();
                         break program;
                     }
@@ -64,11 +64,11 @@ public class Main {
                         int price;
                         Discount discount = new Discount();
                         price = discount.calculateDiscount(80);
-                        System.out.println("You've chosen the Standard wash,"+ price+",-" + "will " +
+                        System.out.println("You've chosen the Standard wash, "+ price+",- " + "will " +
                                 "be deducted from you card");
 
                         washCard.deductFromBalance(price);
-                        myWriter.write(price+"\n");
+                        myWriter.write("\n"+price);
                         myWriter.close();
                         break program;
                     }
@@ -76,7 +76,7 @@ public class Main {
                         System.out.println("You've chosen the DeLuxe wash, 120,- will " +
                                 "be deducted from you card");
                         washCard.deductFromBalance(120);
-                        myWriter.write("120\n");
+                        myWriter.write("\n120");
                         myWriter.close();
                         break program;
                     }

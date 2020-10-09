@@ -12,7 +12,7 @@ public class Admin {
 
 
     public void carStat () throws FileNotFoundException {
-        File washCarStatistics = new File("/Users/AndreasGargulak/Documents/KEA/CarWash/CarWashStatistic");
+        File washCarStatistics = new File("C:\\Users\\asger\\IdeaProjects\\CarWash-1\\CarWashStatistic");
         Scanner inputWashStat = new Scanner(washCarStatistics);
         int economyCount=0;
         int standardCount=0;
