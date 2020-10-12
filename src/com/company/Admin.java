@@ -9,34 +9,61 @@ import java.util.Scanner;
 public class Admin {
     private String password ="1234";
 
+    private int economy = 50;
+    private int standard = 80;
+    private int deluxe = 120;
 
+    public void setEconomy(int economy) {
+        this.economy = economy;
+    }
+
+    public void setStandard(int standard) {
+        this.standard = standard;
+    }
+
+    public void setDeluxe(int deluxe) {
+        this.deluxe = deluxe;
+    }
+    public int getEconomy() {
+        return economy;
+    }
+
+    public int getStandard() {
+        return standard;
+    }
+
+    public int getDeluxe() {
+        return deluxe;
+    }
 
     public void carStat () throws FileNotFoundException {
-        File washCarStatistics = new File("C:\\Users\\asger\\IdeaProjects\\CarWash-1\\CarWashStatistic");
+        File washCarStatistics = new File("/Users/AndreasGargulak/Documents/KEA/CarWash/CarWashStatistic");
         Scanner inputWashStat = new Scanner(washCarStatistics);
+        ArrayList<Object> statisticList = new ArrayList<Object>();
+        Discount discount = new Discount();
         int economyCount=0;
         int standardCount=0;
         int deluxeCount=0;
         int discountEconomy=0;
         int discountStandard=0;
-        ArrayList<Object> statisticList = new ArrayList<Object>();
+
         while (inputWashStat.hasNextLine()){
             statisticList.add(inputWashStat.nextLine());
         }
         for (int i =0; i<=statisticList.size()-1; i++){
-            if(statisticList.get(i).equals("50")){
+            if(statisticList.get(i).equals("economy")){
                 economyCount += 1;
             }
-            if(statisticList.get(i).equals("80")){
+            if(statisticList.get(i).equals("standard")){
                 standardCount+=1;
             }
-            if (statisticList.get(i).equals("120")){
+            if (statisticList.get(i).equals("deluxe")){
                 deluxeCount+=1;
             }
-            if(statisticList.get(i).equals("40")){
+            if(statisticList.get(i).equals("EBeconomy")){
                 discountEconomy+=1;
             }
-            if(statisticList.get(i).equals("64")){
+            if(statisticList.get(i).equals("EBstandard")){
                 discountStandard+=1;
             }
 
@@ -46,8 +73,14 @@ public class Admin {
         System.out.println("number of DeLuxe washes: "+ deluxeCount);
         System.out.println("number of EarlyBird Economy washes: "+ discountEconomy);
         System.out.println("number of EarlyBird Standard washes: "+discountStandard);
-        int totalEarning = economyCount*50+standardCount*80+deluxeCount*120+discountEconomy*40+discountStandard*64;
-        System.out.println(totalEarning+" kr");
+
+        /*int totalEarning = economyCount*getEconomy()
+                +standardCount * getStandard()
+                +deluxeCount * getDeluxe()
+                +discountEconomy * discount.calculateDiscount(getEconomy())
+                +discountStandard * discount.calculateDiscount(getStandard());
+        System.out.println(totalEarning+" kr");*/
+        
     }
     public void adminMenu(String Password){
         if (password.equals(Password)){
