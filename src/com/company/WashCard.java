@@ -27,7 +27,7 @@ public class WashCard {
     public WashCard(){
 
     }
-    public void checkFDM() throws FileNotFoundException {
+    /*public void checkFDM() throws FileNotFoundException {
         Admin admin = new Admin();
         File washCardId = new File("/Users/AndreasGargulak/Documents/KEA/CarWash/validNumbers.txt");
         Scanner inputWashCardId = new Scanner(washCardId);
@@ -36,11 +36,11 @@ public class WashCard {
             list.add(inputWashCardId.nextLine());
         }
         for (int i = 0; i< list.size(); i++){
-            if(list.get(i).equals(999999)){
-                admin.setEconomy(admin.getEconomy()*(int)0.8);
-                admin.setStandard(admin.getStandard()*(int)0.8);
-                admin.setDeluxe(admin.getDeluxe()*(int)0.8);
+            if(list.contains(999)){
+                admin.setEconomy(admin.getEconomy()*8/10);
+                admin.setStandard(admin.getStandard()*8/10);
+                admin.setDeluxe(admin.getDeluxe()*8/10);
             }
         }
-    }
+    }*/
 }

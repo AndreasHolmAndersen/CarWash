@@ -20,5 +20,9 @@ public class UI {
         System.out.println("Your balance is: " + washCard.getBalance()+"\n");
     }
 
+    public void receipt(){
+        System.out.println("");
+    }
+
 
 }

@@ -1,7 +1,6 @@
 package com.company;
 
 import java.io.File;
-import java.io.FileNotFoundException;
 import java.io.FileWriter;
 import java.io.IOException;
 import java.util.ArrayList;
@@ -15,7 +14,7 @@ public class Main {
         Scanner inputWashCardId = new Scanner(washCardId);
         WashCard washCard = new WashCard();
         FileWriter myWriter = new FileWriter("/Users/AndreasGargulak/Documents/KEA/CarWash/CarWashStatistic",true);
-
+        Pause pause = new Pause();
         ArrayList<Object> list = new ArrayList<>();
         while (inputWashCardId.hasNextLine()) {
             list.add(inputWashCardId.nextLine());
@@ -53,55 +52,107 @@ public class Main {
                             System.out.println("you dont have enough money");
                             break;
                         }
-                        if (discount.calculateDiscount(admin.getEconomy())==(int)admin.getEconomy()*0.8){
-                            washCard.checkFDM();
+                        if (discount.calculateDiscount(admin.getEconomy())==admin.getEconomy()*0.8){
+                            admin.checkFDM();
                             System.out.println("You've gotten a discount!");
                             System.out.println("You've chosen the Economy wash: " + admin.getEconomy()*0.8+",- "  +"will "
                                     + "be deducted from you card\n");
                             washCard.deductFromBalance(admin.getEconomy()*8/10);
                             myWriter.write("\nEBeconomy");
-
+                            System.out.println("Press 2 to pause the wash");
+                            System.out.println("Press 1 to continue the wash");
+                            choice = inputUser.nextInt();
+                            if (choice == 2){
+                                pause.wait(5);
+                            }
+                            else if (choice == 1){
+                                break program;
+                            }
                         }
                         else {
-                            washCard.checkFDM();
+                            admin.checkFDM();
                             System.out.println("You've chosen the Economy wash: " + admin.getEconomy() + ",- "
                                     + "will be deducted from you card\n");
 
                             washCard.deductFromBalance(admin.getEconomy());
                             myWriter.write("\neconomy ");
-
-
+                            System.out.println("Press 2 to pause the wash");
+                            System.out.println("Press 1 to continue the wash");
+                            choice = inputUser.nextInt();
+                            if (choice == 2){
+                                pause.wait(5);
+                            }
+                            else if (choice == 1){
+                                break program;
+                            }
                         }
                         myWriter.close();
                         break program;
                     }
                     if (choice == 2) {
-                        washCard.checkFDM();
-                        if(discount.calculateDiscount(admin.getStandard())==(int)admin.getStandard()*0.8){
-                            washCard.checkFDM();
+                        if(washCard.getBalance()< admin.getStandard()) {
+                            System.out.println("you dont have enough money");
+                            break;
+                        }
+                        if(discount.calculateDiscount(admin.getStandard())==admin.getStandard()*0.8){
+                            admin.checkFDM();
                             System.out.println("You've gotten a discount!");
-                            System.out.println("You've chosen the Standard wash, "+ admin.getStandard()+",- "
+                            System.out.println("You've chosen the Standard wash, "+ admin.getStandard()*0.8+",- "
                                     + "will be deducted from you card\n");
                             washCard.deductFromBalance(admin.getStandard()*8/10);
                             myWriter.write("\nEBstandard ");
+                            System.out.println("Press 2 to pause the wash");
+                            System.out.println("Press 1 to continue the wash");
+                            choice = inputUser.nextInt();
+                            if (choice == 2){
+                                pause.wait(5);
+                            }
+                            else if (choice == 1){
+                                myWriter.close();
+                                break program;
+                            }
                         }
                         else {
-                            washCard.checkFDM();
+                            admin.checkFDM();
                             System.out.println("You've chosen the Standard wash, " + admin.getStandard() + ",- " + "will " +
                                     "be deducted from you card\n");
 
                             washCard.deductFromBalance(admin.getStandard());
                             myWriter.write("\nstandard");
+                            System.out.println("Press 2 to pause the wash");
+                            System.out.println("Press 1 to continue the wash");
+                            choice = inputUser.nextInt();
+                            if (choice == 2){
+                                pause.wait(5);
+                            }
+                            else if (choice == 1){
+                                myWriter.close();
+                                break program;
+                            }
                         }
                         myWriter.close();
                         break program;
                     }
                     if (choice == 3) {
-                        washCard.checkFDM();
+                        if(washCard.getBalance()< admin.getDeluxe()) {
+                            System.out.println("you dont have enough money");
+                            break;
+                        }
+                        admin.checkFDM();
                         System.out.println("You've chosen the DeLuxe wash, " + admin.getDeluxe() +",- will " +
                                 "be deducted from you card\n");
                         washCard.deductFromBalance(admin.getDeluxe());
                         myWriter.write("\ndeluxe ");
+                        System.out.println("Press 2 to pause the wash");
+                        System.out.println("Press 1 to continue the wash");
+                        choice = inputUser.nextInt();
+                        if (choice == 2){
+                            pause.wait(5);
+                        }
+                        else if (choice == 1){
+                            myWriter.close();
+                            break program;
+                        }
                         myWriter.close();
                         break program;
                     }
@@ -130,7 +181,6 @@ public class Main {
 
                     String Password = inputUser.nextLine();
                     admin.adminMenu(Password);
-                    program2:
                     while (true) {
                     System.out.println("Press 1 to see statistics: ");
                     System.out.println("Press 2 to change price: ");
