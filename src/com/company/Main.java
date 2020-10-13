@@ -58,14 +58,22 @@ public class Main {
                             System.out.println("You've chosen the Economy wash: " + admin.getEconomy()*0.8+",- "  +"will "
                                     + "be deducted from you card\n");
                             washCard.deductFromBalance(admin.getEconomy()*8/10);
+                            System.out.println("Press 1 for receipt or 2 to decline: ");
+                            choice = inputUser.nextInt();
+                            if (choice == 1) {
+                                ui.receipt(admin.getEconomy() * 0.8, "Economy with Earlybird discount");
+                            }
+
                             myWriter.write("\nEBeconomy");
                             System.out.println("Press 2 to pause the wash");
                             System.out.println("Press 1 to continue the wash");
                             choice = inputUser.nextInt();
                             if (choice == 2){
                                 pause.wait(5);
+                                System.out.println("Remember to take your washcard and/or receipt with you");
                             }
                             else if (choice == 1){
+                                System.out.println("Remember to take your washcard and/or receipt with you");
                                 break program;
                             }
                         }
@@ -75,14 +83,21 @@ public class Main {
                                     + "will be deducted from you card\n");
 
                             washCard.deductFromBalance(admin.getEconomy());
+                            System.out.println("Press 1 for receipt or 2 to decline: ");
+                            choice = inputUser.nextInt();
+                            if (choice == 1) {
+                                ui.receipt(admin.getEconomy() , "Economy");
+                            }
                             myWriter.write("\neconomy ");
                             System.out.println("Press 2 to pause the wash");
                             System.out.println("Press 1 to continue the wash");
                             choice = inputUser.nextInt();
                             if (choice == 2){
+                                System.out.println("Remember to take your washcard and/or receipt with you");
                                 pause.wait(5);
                             }
                             else if (choice == 1){
+                                System.out.println("Remember to take your washcard and/or receipt with you");
                                 break program;
                             }
                         }
@@ -100,14 +115,21 @@ public class Main {
                             System.out.println("You've chosen the Standard wash, "+ admin.getStandard()*0.8+",- "
                                     + "will be deducted from you card\n");
                             washCard.deductFromBalance(admin.getStandard()*8/10);
+                            System.out.println("Press 1 for receipt or 2 to decline: ");
+                            choice = inputUser.nextInt();
+                            if (choice == 1) {
+                                ui.receipt(admin.getStandard() * 0.8, "Standard, with Earlybird discount");
+                            }
                             myWriter.write("\nEBstandard ");
                             System.out.println("Press 2 to pause the wash");
                             System.out.println("Press 1 to continue the wash");
                             choice = inputUser.nextInt();
                             if (choice == 2){
                                 pause.wait(5);
+                                System.out.println("Remember to take your washcard and/or receipt with you");
                             }
                             else if (choice == 1){
+                                System.out.println("Remember to take your washcard and/or receipt with you");
                                 myWriter.close();
                                 break program;
                             }
@@ -118,14 +140,21 @@ public class Main {
                                     "be deducted from you card\n");
 
                             washCard.deductFromBalance(admin.getStandard());
+                            System.out.println("Press 1 for receipt or 2 to decline: ");
+                            choice = inputUser.nextInt();
+                            if (choice == 1) {
+                                ui.receipt(admin.getStandard() , "Standard");
+                            }
                             myWriter.write("\nstandard");
                             System.out.println("Press 2 to pause the wash");
                             System.out.println("Press 1 to continue the wash");
                             choice = inputUser.nextInt();
                             if (choice == 2){
                                 pause.wait(5);
+                                System.out.println("Remember to take your washcard and/or receipt with you");
                             }
                             else if (choice == 1){
+                                System.out.println("Remember to take your washcard and/or receipt with you");
                                 myWriter.close();
                                 break program;
                             }
@@ -142,14 +171,21 @@ public class Main {
                         System.out.println("You've chosen the DeLuxe wash, " + admin.getDeluxe() +",- will " +
                                 "be deducted from you card\n");
                         washCard.deductFromBalance(admin.getDeluxe());
+                        System.out.println("Press 1 for receipt or 2 to decline: ");
+                        choice = inputUser.nextInt();
+                        if (choice == 1) {
+                            ui.receipt(admin.getDeluxe() , "DeLuxe");
+                        }
                         myWriter.write("\ndeluxe ");
                         System.out.println("Press 2 to pause the wash");
                         System.out.println("Press 1 to continue the wash");
                         choice = inputUser.nextInt();
                         if (choice == 2){
                             pause.wait(5);
+                            System.out.println("Remember to take your washcard and/or receipt with you");
                         }
                         else if (choice == 1){
+                            System.out.println("Remember to take your washcard and/or receipt with you");
                             myWriter.close();
                             break program;
                         }
@@ -195,7 +231,6 @@ public class Main {
                         System.out.println("Press 2 to change the price on Standard: ");
                         System.out.println("Press 3 to change the price on DeLuxe: ");
 
-
                             choice = inputUser.nextInt();
                             if (choice == 1){
                                 System.out.println("Enter the new price for Economy: ");
@@ -218,19 +253,14 @@ public class Main {
                                 System.out.println("The new price for DeLuxe is now: "+admin.getDeluxe());
                                 continue;
                             }
-
-
                         }
                     if(choice == 3){
                         continue program;
-
                     }
                    }
-
                 case 5:
                     break program;
             }
         }
-
     }
 }

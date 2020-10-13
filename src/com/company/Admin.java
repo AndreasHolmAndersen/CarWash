@@ -2,7 +2,6 @@ package com.company;
 
 import java.io.File;
 import java.io.FileNotFoundException;
-import java.sql.SQLOutput;
 import java.util.ArrayList;
 import java.util.Scanner;
 
@@ -37,6 +36,10 @@ public class Admin {
         return deluxe;
     }
 
+    /**
+     * @throws FileNotFoundException
+     * method counts every instance of washtypes in the statistics file prints them out.
+     */
     public void carStat() throws FileNotFoundException {
         File washCarStatistics = new File("/Users/AndreasGargulak/Documents/KEA/CarWash/CarWashStatistic");
         Scanner inputWashStat = new Scanner(washCarStatistics);
@@ -75,15 +78,13 @@ public class Admin {
         System.out.println("number of EarlyBird Economy washes: " + discountEconomy);
         System.out.println("number of EarlyBird Standard washes: " + discountStandard);
 
-        /*int totalEarning = economyCount*getEconomy()
-                +standardCount * getStandard()
-                +deluxeCount * getDeluxe()
-                +discountEconomy * discount.calculateDiscount(getEconomy())
-                +discountStandard * discount.calculateDiscount(getStandard());
-        System.out.println(totalEarning+" kr");*/
-
     }
 
+    /**
+     * @param Password Checks if entered password is equal to set password,
+     * if correct prints out correct
+     *
+     */
     public void adminMenu(String Password) {
         if (password.equals(Password)) {
             System.out.println("Password correct");
@@ -92,6 +93,11 @@ public class Admin {
         }
     }
 
+    /**
+     * @throws FileNotFoundException
+     * Loops through our validnumbers file and if the number contains '999' gives you a 20% discount
+     * on all washes
+     */
     public void checkFDM() throws FileNotFoundException {
         File washCardId = new File("/Users/AndreasGargulak/Documents/KEA/CarWash/validNumbers.txt");
         Scanner inputWashCardId = new Scanner(washCardId);
@@ -100,7 +106,7 @@ public class Admin {
             list.add(inputWashCardId.nextLine());
         }
         while (true){
-            list.contains(999);
+            list.equals(123456);
             setEconomy(getEconomy() * 8 / 10);
             setStandard(getStandard() * 8 / 10);
             setDeluxe(getDeluxe() * 8 / 10);
